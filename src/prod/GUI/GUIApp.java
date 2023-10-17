@@ -13,7 +13,7 @@ public class GUIApp {
 
         JFrame frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 100);
+        frame.setSize(500, 150);
         frame.setLocation(520, 300);
 
         JPanel pnl = new JPanel();
@@ -34,32 +34,42 @@ public class GUIApp {
         pnl.add(jlabel2);
         pnl.add(jlabel);
 
-        JPanel pnl2 = new JPanel();
-        JButton btn1 = new JButton("+");
-        JButton btn2 = new JButton("−");
-        JButton btn3 = new JButton("Высчитать");
-        pnl2.add(btn1);
-        pnl2.add(btn2);
-        pnl2.add(btn3);
+        JPanel name = new JPanel();
+        JLabel jlabel3 = new JLabel("Егор Харитончик, 12 группа");
+        name.add(jlabel3);
 
+        JPanel pnl2 = new JPanel();
+        JButton btnPlus = new JButton("+");
+        JButton btnMinus = new JButton("−");
+        JButton btnMulti = new JButton("*");
+        JButton btnDiv = new JButton("/");
+        JButton result = new JButton("Высчитать");
+
+        pnl2.add(btnPlus);
+        pnl2.add(btnMinus);
+        pnl2.add(btnMulti);
+        pnl2.add(btnDiv);
+        pnl2.add(result);
+
+        frame.getContentPane().add(BorderLayout.NORTH, name);
         frame.getContentPane().add(BorderLayout.CENTER, pnl);
         frame.getContentPane().add(BorderLayout.SOUTH, pnl2);
         frame.setVisible(true);
 
 
-        btn3.addActionListener(new ActionListener() {
+        result.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (manager.checkNumber(textField1.getText()) & manager.checkNumber(textField2.getText())) {
-                    String result = manager.getCalculation(textField1.getText(), textField2.getText());
-                    if(manager.checkNumber(result)) {
-                        jlabel.setText(result);
+                if (manager.checkNumber(manager.toNormalString(textField1.getText())) & manager.checkNumber(manager.toNormalString(textField2.getText()) )) {
+                    String result = manager.getCalculation(manager.toNormalString(textField1.getText()), manager.toNormalString(textField2.getText()));
+                    if (manager.checkNumber(result)) {
+                        jlabel.setText(manager.toViewWithSpaces(result));
                     }
                 }
             }
         });
 
-        btn1.addActionListener(new ActionListener() {
+        btnPlus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jlabel1.setText("+");
@@ -67,11 +77,27 @@ public class GUIApp {
             }
         });
 
-        btn2.addActionListener(new ActionListener() {
+        btnMinus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jlabel1.setText("−");
                 manager.setCommand("−");
+            }
+        });
+
+        btnMulti.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jlabel1.setText("*");
+                manager.setCommand("*");
+            }
+        });
+
+        btnDiv.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jlabel1.setText("/");
+                manager.setCommand("/");
             }
         });
     }
