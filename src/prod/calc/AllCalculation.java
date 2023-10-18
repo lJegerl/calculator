@@ -154,6 +154,7 @@ public class AllCalculation {
         switch (getCommand()) {
             case ("+"):
                 result = firstNumber.add(secondNumber).setScale(6, RoundingMode.HALF_UP).stripTrailingZeros();
+
                 break;
             case ("−"):
                 result = firstNumber.subtract(secondNumber).setScale(6, RoundingMode.HALF_UP).stripTrailingZeros();
@@ -165,6 +166,6 @@ public class AllCalculation {
                 result = firstNumber.divide(secondNumber,6, RoundingMode.HALF_UP).stripTrailingZeros();
                 break;
         }
-        return result.toString();
+        return BigDecimal.valueOf(Double.parseDouble(result.toString())).toPlainString();
     }
 }
