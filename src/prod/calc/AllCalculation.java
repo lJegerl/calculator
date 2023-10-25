@@ -137,8 +137,8 @@ public class AllCalculation {
     public String getCalculation(String firstNumber, String secondNumber) {
         String firstFreshNumber = replaceComma(firstNumber);
         String secondFreshNumber = replaceComma(secondNumber);
-        BigDecimal BDFirstNumber = new BigDecimal(Double.valueOf(firstFreshNumber));
-        BigDecimal BDSecondNumber = new BigDecimal(Double.valueOf(secondFreshNumber));
+        BigDecimal BDFirstNumber = new BigDecimal(firstFreshNumber);
+        BigDecimal BDSecondNumber = new BigDecimal(secondFreshNumber);
         if (checkDivideZero(secondNumber)) {
             return checkCommand(BDFirstNumber, BDSecondNumber);
         }
@@ -154,7 +154,6 @@ public class AllCalculation {
         switch (getCommand()) {
             case ("+"):
                 result = firstNumber.add(secondNumber).setScale(6, RoundingMode.HALF_UP).stripTrailingZeros();
-
                 break;
             case ("−"):
                 result = firstNumber.subtract(secondNumber).setScale(6, RoundingMode.HALF_UP).stripTrailingZeros();
