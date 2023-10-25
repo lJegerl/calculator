@@ -35,7 +35,7 @@ public class GUIApp {
         pnl.add(jlabel);
 
         JPanel name = new JPanel();
-        JLabel jlabel3 = new JLabel("Егор Харитончик Сергеевич, 12 группа");
+        JLabel jlabel3 = new JLabel("Егор Харитончик Сергеевич, 3 курс 12 группа (ФПМИ ПИ)");
         name.add(jlabel3);
 
         JPanel pnl2 = new JPanel();
