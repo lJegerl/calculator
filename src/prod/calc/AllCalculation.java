@@ -165,6 +165,6 @@ public class AllCalculation {
                 result = firstNumber.divide(secondNumber,6, RoundingMode.HALF_UP).stripTrailingZeros();
                 break;
         }
-        return BigDecimal.valueOf(Double.parseDouble(result.toString())).toPlainString();
+        return result.toString();
     }
 }
